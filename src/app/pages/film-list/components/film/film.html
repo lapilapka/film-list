@@ -1,0 +1,9 @@
+@let filmData = film();
+<mat-card appearance="outlined" class="film">
+  <mat-card-content class="d-flex flex-column align-items-center text-center">
+    <div class="film__img mb-3">
+    </div>
+    <p class="mb-2">{{  filmData?.title}}</p>
+    <p class="mb-0">{{filmData?.year}}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,10 @@
+.film {
+  background-color: transparent;
+
+  &__img {
+    max-width: 250px;
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    background-color: var(--bs-gray-200);
+  }
+}
