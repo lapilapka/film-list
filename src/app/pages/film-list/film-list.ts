@@ -1,5 +1,5 @@
 import {Component, effect, inject, linkedSignal, signal, viewChild} from '@angular/core';
-import {Film} from '../../core/models/film.model';
+import {Film} from '../../shared/models/film.model';
 import {FilmItem} from './components/film/film';
 import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';

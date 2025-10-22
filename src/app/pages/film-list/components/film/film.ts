@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {MatCard, MatCardContent} from '@angular/material/card';
-import {Film} from '../../../../core/models/film.model';
+import {Film} from '../../../../shared/models/film.model';
 
 @Component({
   selector: 'app-film-item',
