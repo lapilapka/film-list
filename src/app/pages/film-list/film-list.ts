@@ -55,6 +55,14 @@ export class FilmList {
   });
 
   constructor() {
+    effect(() => {
+      if (!!this.filteredMovies().length) {
+        this.searchControl.enable();
+      } else {
+        this.searchControl.disable();
+      }
+    })
+
     this.searchControl.valueChanges.pipe(
       debounceTime(500),
       tap((searchQuery) => {
