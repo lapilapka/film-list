@@ -1,7 +1,7 @@
 import {Component, effect, inject, linkedSignal, signal, viewChild} from '@angular/core';
 import {Film} from '../../shared/models/film.model';
 import {FilmItem} from './components/film/film';
-import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
+import {MatMenu, MatMenuContent, MatMenuTrigger} from '@angular/material/menu';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {catchError, debounceTime, of, tap} from 'rxjs';
@@ -10,6 +10,7 @@ import {MatIconButton} from '@angular/material/button';
 import {HttpClient} from '@angular/common/http';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-film-list',
@@ -23,7 +24,9 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatIcon,
     MatIconButton,
-    MatProgressSpinner
+    MatProgressSpinner,
+    MatMenuContent,
+    MatTooltip
   ],
   templateUrl: './film-list.html',
   styleUrl: './film-list.scss'
@@ -42,7 +45,6 @@ export class FilmList {
       return movies;
     }
   });
-  readonly activeFilm = signal<Film | null>(null);
 
   constructor() {
     this.searchControl.valueChanges.pipe(
@@ -59,11 +61,6 @@ export class FilmList {
         );
       })
     ).subscribe()
-  }
-
-  onOpenMenuClick(film: Film) {
-    this.activeFilm.set(film);
-    this.menuTrigger()?.openMenu()
   }
 
   onCloseMenuClick(): void {

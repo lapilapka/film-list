@@ -33,7 +33,17 @@
   width: fit-content;
   padding: 6px 12px;
   border-radius: 4px;
-  background: var(--bs-gray-400);
+  color: #ffffff;
+
+  &.success {
+    background: var(--bs-success);
+  }
+  &.warning {
+    background: var(--bs-warning);
+  }
+  &.error {
+    background: var(--bs-danger);
+  }
 }
 
 .film-menu__genre {
