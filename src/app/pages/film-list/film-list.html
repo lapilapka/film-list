@@ -2,7 +2,7 @@
   <h1 class="h1 mb-4">Каталог фильмов</h1>
   <mat-form-field appearance="outline" subscriptSizing="dynamic" >
     <mat-label>Поиск фильмов</mat-label>
-    <input matInput type="text" [formControl]="searchControl" [disabled]="!!filteredMovies().length">
+    <input matInput type="text" [formControl]="searchControl">
   </mat-form-field>
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 film-list">
