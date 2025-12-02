@@ -11,6 +11,7 @@ import {HttpClient} from '@angular/common/http';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatTooltip} from '@angular/material/tooltip';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-film-list',
@@ -33,11 +34,18 @@ import {MatTooltip} from '@angular/material/tooltip';
 })
 export class FilmList {
   private http = inject(HttpClient);
+  private snackBar = inject(MatSnackBar);
   private apiUrl = 'http://localhost:3000/films'
   menuTrigger = viewChild<MatMenuTrigger>('menuTrigger');
   readonly searchControl = new FormControl<string>('');
   readonly popularMovies = toSignal(this.http.get<Film[]>(this.apiUrl).pipe(
-    catchError(() => of([])),
+    catchError(() => {
+      this.snackBar.open('Не удалось получить данные', 'Закрыть', {
+        duration: 3000,
+        verticalPosition: 'top'
+      })
+      return of([])
+    }),
   ), {initialValue: []});
   readonly filteredMovies = linkedSignal({
     source: this.popularMovies,
